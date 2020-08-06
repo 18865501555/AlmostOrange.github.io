@@ -6,10 +6,7 @@
 - Java
 
   - [Quick start](JavaSE/IO流.md)
-  -	[123](JavaSE/boolean-Boolean.md)
-  - [Writing more pages](more-pages.md)
-  - [Custom navbar](custom-navbar.md)
-  - [Cover page](cover.md)
+
 
 - MySQL
 
