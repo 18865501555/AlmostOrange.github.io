@@ -24,7 +24,7 @@
 
 - 创建`maven`工程并导入坐标
 
-  ![](https://tva1.sinaimg.cn/large/007S8ZIlly1ghhjnzgvpxj30d40hy75f.jpg)
+  <img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghhjnzgvpxj30d40hy75f.jpg" style="zoom:50%;" />
 
 - 创建`实体类`和`dao`的接口
 
@@ -216,15 +216,6 @@
   - 把`IUserDao.xml`移除，在`dao`接口的方法上使用`@Select`注解，并且制定`SQL`语句
 
     ```java
-    package com.dao;
-    
-    import com.domain.User;
-    import org.apache.ibatis.annotations.Select;
-    import java.util.List;
-    
-    /**
-     * 用户的持久层接口
-     */
     public interface IUserDao {
         /**
          * 查询所有操作
@@ -233,18 +224,18 @@
         List<User> findAll();
     }
     ```
-
     
-
+    
+    
   - 同时需要在`SqlMapConfig.xml`中的`mapper`配置时，使用`class`属性置顶`dao`接口的全限定类名
-
+  
     ```xml
     <!--指定映射配置文件的位置，映射配置文件值得是每个dao独立的配置文件
             如果是使用注解来配置的话，此处应该使用class属性指定被注解的dao全限定类名
         -->
-        <mappers>
+      <mappers>
             <mapper class="com.dao.IUserDao"></mapper>
-        </mappers>
+      </mappers>
     ```
 
     
