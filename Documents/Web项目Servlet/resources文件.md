@@ -1,0 +1,15 @@
+## jdbc.properties
+
+```properties
+db.driver=com.mysql.cj.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/newdb3?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+db.username=root
+db.password=root
+db.maxActive=10
+db.initialSize=2
+```
+
+
+
+---
+
