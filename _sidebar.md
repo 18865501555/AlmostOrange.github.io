@@ -33,5 +33,4 @@
 
 
 - **Links**
-- [![code](https://icongr.am/clarity/link.svg?size=16&color=808080) 个人博客](https://www.51it.wang)
-- [![code](https://icongr.am/clarity/link.svg?size=16&color=808080) 申请友链](#)
+- [![code](https://) 个人博客]
