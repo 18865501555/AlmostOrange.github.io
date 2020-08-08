@@ -47,7 +47,7 @@
 |          |                                    |                                                              |
 | **改**   | 修改表名                           | `rename table 原名 to 新名;`                                 |
 |          | 修改表字段                         | `alter table 表名 change 原名 新名 新类型;`                  |
-|          | 修改字段排列顺序                   | `alter table 表名 add 字段名 after 字段名;`                  |
+|          | 修改字段排列顺序                   | `alter table 表名 modify 字段名1 类型 first/after 字段名2;`  |
 |          |                                    |                                                              |
 | **查**   | 查询所有表                         | `show tables;`                                               |
 |          | 查询表详情                         | `show create table 表名 \G;`                                 |
@@ -156,7 +156,7 @@
 
 | 名称     | 格式                                                         |
 | -------- | ------------------------------------------------------------ |
-| with汇总 | `select 字段名1,count(1) from 表名 group by 字段名1 with roolup;` |
+| with汇总 | `select 字段名1,count(1) from 表名 group by 字段名1 with rollup;` |
 
 ##### `having`
 
