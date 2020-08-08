@@ -33,13 +33,13 @@
 - - 数据库相关 
   - - [JDBC](Documents/面试刷题/数据库相关/JDBC.md)
 - - 异常相关 
-  - - [面试题汇总一](Documents/面试刷题/面试题汇总一.md)
+  - - [#](Documents/面试刷题/#.md)
 - - 线程相关 
-  - - [面试题汇总一](Documents/面试刷题/面试题汇总一.md)
+  - - [#](Documents/面试刷题/#.md)
 - - 集合相关 
-  - - [面试题汇总一](Documents/面试刷题/面试题汇总一.md)
+  - - [#](Documents/面试刷题/#.md)
 - - GC相关 
-  - - [面试题汇总一](Documents/面试刷题/面试题汇总一.md)
+  - - [#](Documents/面试刷题/#.md)
 
 
 
