@@ -206,3 +206,59 @@
 ### `DCL`语句
 
 - `DCL`语句主要是管理数据库权限的时候使用，这类操作一般是DBA使用的，开发人员不会使用`DCL`语句。
+
+---
+
+### 主键约束 `Primary Key`
+
+- 主键:数据唯一性的字段
+- 约束:创建表时给表字段添加的限制
+- 主键约束:**唯一且非空**
+
+---
+
+| 例子                                                      | 备注                 |
+| --------------------------------------------------------- | -------------------- |
+| `create table 表名(id int primary key,name varchar(10));` |                      |
+| `insert into 表名 values(1,'aaa');`                       |                      |
+| `insert into 表名 values(1,'bbb');`                       | ❌主键值重复          |
+| `insert into 表名 values(null,'ccc');`                    | ❌主键值不能为 `null` |
+
+---
+
+### 自增
+
+- 给字段添加自增后,赋值` null`则触发自增
+- 自增规则:从**历史最大值**+1
+
+| 例子                                                         | 备注      |
+| ------------------------------------------------------------ | --------- |
+| `create table 表名(id int primary key auto_increment,name varchar(10));` |           |
+| `insert into 表名 values(null,'aaa');`                       | 主键值:1  |
+| `insert into 表名 values(null,'bbb');`                       | 主键值:2  |
+| `insert into 表名 values(10,'ccc');`                         | 主键值:10 |
+| `insert into 表名  values(null,'ddd');`                      | 主键值:11 |
+| `delete from 表名 where id>=10;`                             |           |
+| `insert into 表名 values(null,'eee');`                       | 主键值:12 |
+
+---
+
+### 导入`*.sql`文件到`MySQL`中
+
+- 把`emp.sql`文件放到某个盘的根目录 
+
+- 在终端中执行
+
+  `source d:/emp.sql;`
+
+  `select * from emp;`   查看是否乱码   如果有乱码  执行  `set names gbk;`
+
+### `is null` 和 `is not null`
+
+- 如果查询字段的值为`null` 是`is null`  
+- 不为`null` 则使用 `is not null`
+  - 查询没有上级领导的员工信息
+    - `select *  from emp where mgr is null;`
+  - 查询有上级领导的员工姓名/工资和领导编号
+    - `select ename,sal,mgr from emp where mgr is not null;`
+
