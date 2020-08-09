@@ -5,8 +5,10 @@
 
 - 数据库MySQL
 
+  - [数据库基础](Documents/MySQL/数据库基础.md)
   - [SQL语言](Documents/MySQL/SQL.md)
   - [PrimaryKey主键](Documents/MySQL/PrimaryKey.md)
+  - [MySQL数据类型](Documents/MySQL/MySQL数据类型.md)
 
 
 - 框架Framework
