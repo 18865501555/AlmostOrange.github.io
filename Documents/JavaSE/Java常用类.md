@@ -141,11 +141,90 @@ public class StringTest{
 
 ## 时间处理相关类
 
+- 在标准`Java`类库中包含一个`Date`类
+  - 它的对象表示一个特定的瞬间，精确到毫秒
+- `Java`中时间的表白说白了也是数字
+  - 是从标准纪元`1970.1.1` `0`点开始到某个时刻的毫秒数
+  - 类型是`long`
 
+### `DateFormat`和`SimpleDateFormat`
+
+- 完成字符串和时间对象的转化
+- `format`
+- `parse`
+
+### `Calendar`日历类
+
+- 人们对于时间的认识是
+  - 某年某月某日，这样的日期概念
+- 计算机是`long`类型的数字
+- 通过`Calendar`在二者之间搭起桥梁
+
+### `GregorianCalendar`公历
+
+- `GregorianCalendar`是`Calendar`的一个具体子类
+- 提供了世界上大多数国家/地区使用的标准日历系统
+- 注意
+  - 月份:一月是`0`，二月是`1`，以此类推，`12`月是`11`
+  - 星期:周日是`1`，周一是`2`，以此类推，周六是`7`
 
 ## 枚举类
 
-## Math类和Random类
+- 只能取特定值中的一个
+- 使用`enum`关键字
+- 所有的枚举类型隐性的继承自`java.lang.Enum`
+- 枚举实质上还是类，而每个枚举的成员实质就是一个枚举类型的实例，默认都是`public static final`的，可以直接通过枚举类型名直接使用它们
+- 强烈建议当你需要定义一组常量时，使用枚举类型
+- 尽量不要使用枚举的高级特性，事实上高级特性都可以使用普通类来实现，没必要引入复杂性
 
-## File类
+## `Math`类和`Random`类
+
+- 包含了常见的数学运算函数
+- `random()`
+  - 生成`[0,1)`之间的随机浮点数
+- 生成`0-10`之间的任意整数
+  - `int a = (int)(10*Math.random());`
+- 生成`20-30`之间的任意整数
+  - `int b = 20 + (int)(10*Math.random());`
+
+## `File`类
+
+- 文件和目录路径名的抽象表示形式
+- 一个`File`对象可以代表一个文件或目录
+- 可以实现获取文件和目录属性等功能
+- 可以实现对文件和目录的创建、删除等功能
+- `File`不能访问文件内容
+
+```java
+File file = new File("d:\\test\\java.text");
+File file = new File("d:/test/java.text");
+File file = new File("java.text");
+```
+
+路径可以时绝对路径和相对路径，分隔符采用`\\`或者`/`
+
+### 通过`File`对象可以访问文件的属性
+
+```java
+public String getName();
+public String getPath();
+public boolean isFile();
+public boolean isDirectory();
+public boolean canRead();
+public boolean canWrite();
+public boolean exists();
+public long length();
+public boolean isHidden();
+public long lastModified();
+public File[] listFiles();
+```
+
+### 通过`File`对象创建空文件或目录(在该对象所指的文件或目录不存在的情况下)
+
+```java
+public boolean createNewFile()throws IOException;
+public boolean delete();
+public boolean mkdir();
+public boolean mkdirs();
+```
 
