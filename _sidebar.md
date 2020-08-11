@@ -14,7 +14,7 @@
   - [JDBC](Documents/MySQL/JDBC.md)
   - [MySQL数据类型](Documents/MySQL/MySQL数据类型.md)
   - [truncate、delete与drop的区别](Documents/MySQL/删除语句的区别.md)
-  - [8种SQL错误用法](Documents/MySQL/8中SQL错误用法.md)
+  - [8种SQL错误用法](Documents/MySQL/八种SQL错误用法.md)
 
 
 - 框架Framework
