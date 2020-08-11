@@ -140,15 +140,34 @@
 - `MySQL` 对待 `EXISTS` 子句时，仍然采用嵌套子查询的执行方式。如下面的 `SQL` 语句:
 
   ```sql
-  
+  SELECT * FROM 
+  	my_neighbor n
+  	LEFT JOIN my_neighbor_apply sra
+  	ON n.id = sra.neighbor_id
+  	AND sra.user_id = 'xxx'
+  WHERE
+  	n.topic_status < 4
+  	AND EXISTS(SELECT 1
+              FROM message_info m
+              WHERE n.id = m.neighbor_id
+              AND m.inuser = 'xxx')
+    AND n.topic_type <> 5
   ```
 
 - 去掉 `exists` 更改为 `join`，能够避免嵌套子查询，将执行时间从1.93秒降低为1毫秒。
 
   ```sql
-  
+  SELECT * FROM my_neighbor n
+  	INNER JOIN message_info m
+	ON n.id = m.neighbor_id
+  	AND m.inuser = 'xxx'
+  	LEFT JOIN my_neighbor_apply sra
+  	ON n.id = sra.neighbor_id
+  	AND sra.user_id = 'xxx'
+  WHERE n.topic_status < 4
+  AND n.topic_type <> 5
   ```
-
+  
   
 
 ---
@@ -164,15 +183,21 @@
 - 如下面的语句，从执行计划可以看出其条件作用于聚合子查询之后
 
   ```sql
-  
+  SELECT * FROM (SELECT target,Count(*)
+                FROM operation
+                GROUP BY target) t
+  WHERE target = 'rm-xxxx'
   ```
 
 - 确定从语义上查询条件可以直接下推后，重写如下:
 
   ```sql
-  
+  SELECT target,Count(*)
+  FROM operation
+WHERE target = 'rm-xxxx'
+  GROUP BY target
   ```
-
+  
   
 
 ---
@@ -182,7 +207,15 @@
 - 先上初始 SQL 语句:
 
   ```sql
-  
+  SELECT * FROM my_orer o
+  	LEFT JOIN my_userinfo u
+  	ON o.uid = u.uid
+  	LEFT JOIN my_productinfo p
+  	ON o.pid = p.pid
+  WHERE (o.display = 0)
+  	AND (o.ostaus =1)
+  ORDER BY o.selltime DESC
+  LIMIT 0,15
   ```
 
 - 数为90万，时间消耗为12秒。
@@ -190,7 +223,18 @@
 - 由于最后 WHERE 条件以及排序均针对最左主表，因此可以先对 my_order 排序提前缩小数据量再做左连接。SQL 重写后如下， 执行时间缩小为1毫秒左右。
 
   ```sql
-  
+  SELECT * FROM (
+  	SELECT * FROM my_order o
+  	WHERE (o.display = 0)
+  		AND (o.ostaus = 1)
+  	ORDER BY o.selltime DESC
+  	LIMIT 0,15) o
+  	LEFT JOIN my_userinfo u
+  	ON o.uid = u.uid
+  	LEFT JOIN my_productinfo p
+  	ON o.pid = p.pid
+  ORDER BY o,selltime DESC
+  LIMIT 0,15
   ```
 
 - 再检查执行计划:子查询物化后(select_type=DERIVED)参与 JOIN。虽然估算行扫描仍然为90万，但是利用了索引以及 LIMIT 子句后，实际执行时间变得很小
@@ -202,7 +246,18 @@
 - 再来看下面这个已经初步优化过的例子(左连接中的主表优先作用查询条件):
 
   ```sql
-  
+  SELECT a.*,c.allocated
+  FROM (SELECT resourceid
+       FROM my_distribute d
+       WHERE isdelete = 0
+       AND cusmanagercode = '1234567'
+       ORDER BY salecode 
+       LIMIT 20) a
+  LEFT JOIN
+  	(SELECT resourcesid,sum(ifnull(allocation,0)*12345) allocated
+    FROM my_resources
+    GROUP BY resourcesid) c
+  ON a.resourceid = c.resourcesid
   ```
 
 - 那么该语句还存在其它问题吗?不难看出子查询 c 是全表聚合查询，在表数量特别大的情况下会导致整个语句的性能下降
@@ -210,15 +265,44 @@
 - 其实对于子查询 c，左连接最后结果集只关心能和主表 resourceid 能匹配的数据。因此我们可以重写语句如下，执行时间从原来 的2秒下降到2毫秒。
 
   ```sql
-  
+  SELECT a.*,c.allocated
+  FROM (SELECT resourceid
+       FROM my_distribute d
+       WHERE isdelete = 0
+       AND cusmanagercode = '1234567'
+       ORDER BY salecode
+       LIMIT 20) a
+  LEFT JOIN (SELECT resourcesid,sum(ifnull(allocation,o)*12345) allocated
+            FROM my_resources r,(SELECT resourceid
+                                FROM my_distribute d
+                                WHERE isdelete =0
+                                AND cusmanagercode ='1234567'
+                                ORDER BY salecode
+                                LIMIT 20) a
+            WHERE r.resourcesid = a,resourcesid
+            GROUP BY resourcesid) c
+  ON a.resourceid = c.resourceid
   ```
 
 - 但是子查询 a 在我们的SQL语句中出现了多次。这种写法不仅存在额外的开销，还使得整个语句显的繁杂。使用 WITH 语句再次 重写:
 
   ```sql
-  
+  WITH a AS
+  (SELECT resourceid
+FROM my_distribute d
+  WHERE isdelete = 0
+  AND cusmanagercode = '1234567'
+  ORDER BY salecode
+  LIMIT 20)
+  SELECT a.*,c.allocated
+  FROM a
+  LEFT JOIN (SELECT resourcesid,sum(ifnull(allocation,0)*12345) allocated
+             FROM my_resources r,a
+             WHERE r.resourcesid = a.resourcesid
+             GROUP BY resourcesid) c
+  ON a.resourceid = c.resourcesid
   ```
-
+  
   
 
 ---
