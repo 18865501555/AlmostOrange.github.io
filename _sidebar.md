@@ -44,22 +44,7 @@
 - 面试题 
 
 - - 面试题 
-  - - [面试题汇总一](Documents/面试刷题/面试题汇总一.md)
-- - 数据库相关 
-  - - [数据库汇总](Documents/面试刷题/数据库相关/数据库相关.md)
-  - - [JDBC](Documents/面试刷题/数据库相关/JDBC.md)
-- - 异常相关 
-  - - [异常汇总](Documents/面试刷题/异常相关/异常相关.md)
-  - - [RuntimeException](Documents/面试刷题/异常相关/RuntimeException.md)
-- - 线程相关 
-  - - [线程汇总](Documents/面试刷题/线程相关/线程相关.md)
-  - - [sleep](Documents/面试刷题/线程相关/sleep.md)
-  - - [Synchronized](Documents/面试刷题/线程相关/Synchronized.md)
-- - 集合相关 
-  - - [集合汇总](Documents/面试刷题/集合相关/集合.md)
-- - GC相关 
-  - - [GC汇总](Documents/面试刷题/GC相关/GC.md)
-
+  - - [面试题汇总](Documents/面试刷题/面试题汇总.md)
 
 
 
