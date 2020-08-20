@@ -34,6 +34,13 @@
 
   - [404汇总](Documents/踩过的坑/404汇总.md)
 
+- 安装教程
+
+  - [ARIA2](Documents/安装教程/aria2.md)
+  - [Redis](Documents/安装教程/Redis.md)
+
+
+
 - 面试题 
 
 - - 面试题 
