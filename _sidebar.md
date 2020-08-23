@@ -34,6 +34,13 @@
 
   - [404汇总](Documents/踩过的坑/404汇总.md)
 
+- Unix/Linux 
+
+  - [Unix/Linux命令](Documents/Linux/Linux命令.md)
+
+
+
+
 - 安装教程
 
   - [ARIA2](Documents/安装教程/aria2.md)
@@ -43,8 +50,7 @@
 
 - 面试题 
 
-- - 面试题 
-  - - [面试题汇总](Documents/面试刷题/面试题汇总.md)
+  - [面试题汇总](Documents/面试刷题/面试题汇总.md)
 
 
 
