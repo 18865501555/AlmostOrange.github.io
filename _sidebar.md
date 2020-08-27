@@ -5,7 +5,9 @@
 - JavaSE
 
   - [Java基础学习笔记](Documents/JavaSE/Java基础学习笔记.md)
+  - [JavaSE学习笔记](Documents/JavaSE/JavaSE学习笔记.md)
   - [Java常用类](Documents/JavaSE/Java常用类.md)
+  - [进制](Documents/JavaSE/进制.md)
 
 
 - 数据库MySQL

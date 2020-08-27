@@ -1,5 +1,3 @@
-# Headline
+# 就是个记录用的学习笔记
 
-> 
-
-# AlmostOrange.github.io
+> 手机左下角↙️可以查看大纲
