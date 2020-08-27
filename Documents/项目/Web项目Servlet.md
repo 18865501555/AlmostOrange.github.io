@@ -1,4 +1,80 @@
-## DBUtils
+
+## Web项目Servlet
+
+### Maven模块Servlet-Pom依赖
+
+```xml
+<!-- 数据库连接池 -->
+<dependency>
+  <groupId>com.alibaba</groupId>
+  <artifactId>druid</artifactId>
+  <version>1.1.21</version>
+</dependency>
+<!-- 链接MySQL数据库 -->
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>8.0.15</version>
+</dependency>
+
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>javax.servlet-api</artifactId>
+  <version>4.0.1</version>
+  <scope>provided</scope>
+</dependency>
+
+<dependency>
+  <groupId>javax</groupId>
+  <artifactId>javaee-web-api</artifactId>
+  <version>6.0</version>
+  <scope>provided</scope>
+</dependency>
+
+<dependency>
+  <groupId>jstl</groupId>
+  <artifactId>jstl</artifactId>
+  <version>1.2</version>
+</dependency>
+```
+
+
+
+---
+
+### Thymeleaf-Pom依赖
+
+```xml
+xmlns:th="http://www.http://www.thymeleaf.org"
+<!-- Thymeleaf -->
+<dependency>
+    <groupId>org.thymeleaf</groupId>
+    <artifactId>thymeleaf</artifactId>
+    <version>3.0.11.RELEASE</version>
+</dependency>
+```
+
+
+
+---
+
+### Jackson JSON API
+```xml
+<dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.11.0</version>
+</dependency>
+```
+
+
+
+
+---
+
+## Utils工具类
+
+### DBUtils
 
 ```java
 import com.alibaba.druid.pool.DruidDataSource;
@@ -53,7 +129,7 @@ public class DBUtils {
 
 ---
 
-## ThUtils
+### ThUtils
 
 ```java
 import org.thymeleaf.TemplateEngine;
@@ -92,4 +168,34 @@ public class ThUtils {
 }
 
 ```
+
+---
+
+## resources文件
+
+### jdbc.properties
+
+```properties
+db.driver=com.mysql.cj.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/newdb3?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+db.username=root
+db.password=root
+db.maxActive=10
+db.initialSize=2
+```
+
+
+
+---
+
+## 创建工程分包
+
+| 包名              | 分类                |
+| :---------------- | :------------------ |
+| cn.xxx.utils      | 工程中所有的工具类  |
+| cn.xxx.controller | 工程中所有的Servlet |
+| cn.xxx.dao        | 工程中所有的Dao     |
+| cn.xxx.entity     | 工程中所有的实体类  |
+
+---
 

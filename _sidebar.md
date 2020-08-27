@@ -4,6 +4,7 @@
 
 - JavaSE
 
+  - [Java基础学习笔记](Documents/JavaSE/Java基础学习笔记.md)
   - [Java常用类](Documents/JavaSE/Java常用类.md)
 
 
@@ -25,12 +26,10 @@
 
 
 
-- Web项目Servlet
+- 项目
 
-  - [Pom依赖](Documents/Web项目Servlet/Web项目下Maven模块Pom依赖.md)
-  - [Utils工具类](Documents/Web项目Servlet/Utils工具类.md)
-  - [resources文件](Documents/Web项目Servlet/resources文件.md)
-  - [创建工程分包](Documents/Web项目Servlet/创建工程分包.md)
+  - [Web项目Servlet](Documents/项目/Web项目Servlet.md)
+  
 
 - 踩过的坑
 
