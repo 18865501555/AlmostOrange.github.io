@@ -2,19 +2,18 @@
 
   - [快捷键](Documents/IDEA/快捷键.md)
 
-- JavaSE
+- 学习笔记
 
-  - [Java基础学习笔记](Documents/JavaSE/Java基础学习笔记.md)
-  - [JavaSE学习笔记](Documents/JavaSE/JavaSE学习笔记.md)
-  - [Java常用类](Documents/JavaSE/Java常用类.md)
-  - [进制](Documents/JavaSE/进制.md)
+  - [Java基础学习笔记](Documents/学习笔记/Java基础学习笔记.md)
+  - [JavaSE学习笔记](Documents/学习笔记/JavaSE学习笔记.md)
+  - [数据库学习笔记](Documents/学习笔记/数据库学习笔记.md)
+  - [Java常用类](Documents/学习笔记/Java常用类.md)
+  - [进制](Documents/学习笔记/进制.md)
 
 
 - 数据库MySQL
 
-  - [数据库基础](Documents/MySQL/数据库基础.md)
   - [SQL语言](Documents/MySQL/SQL.md)
-  - [JDBC](Documents/MySQL/JDBC.md)
   - [MySQL数据类型](Documents/MySQL/MySQL数据类型.md)
   - [truncate、delete与drop的区别](Documents/MySQL/删除语句的区别.md)
   - [8种SQL错误用法](Documents/MySQL/八种SQL错误用法.md)
