@@ -20,6 +20,7 @@
 - 数据库
 
   - [SQL语言](Documents/数据库/SQL.md)
+  - [索引](Documents/数据库/索引.md)
   - [数据库学习笔记](Documents/数据库/数据库学习笔记.md)
   - [MySQL数据类型](Documents/数据库/MySQL数据类型.md)
   - [truncate、delete与drop的区别](Documents/数据库/删除语句的区别.md)
