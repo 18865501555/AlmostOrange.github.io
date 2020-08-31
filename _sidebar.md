@@ -36,9 +36,6 @@
 
   - [SQL语言](Documents/数据库/SQL.md)
   - [索引](Documents/数据库/索引.md)
-  - [b树](Documents/数据库/b树.md)
-  - [b+树](Documents/数据库/b+树.md)
-  - [b*树](Documents/数据库/b*树.md)
   - [事务](Documents/数据库/事务.md)
   - [数据库学习笔记](Documents/数据库/数据库学习笔记.md)
   - [MySQL数据类型](Documents/数据库/MySQL数据类型.md)
@@ -51,6 +48,10 @@
   - [框架概述](Documents/框架/框架概述.md)
   - [MyBatis框架](Documents/框架/MyBatis框架.md)
   - [常用注解](Documents/框架/常用注解.md)
+
+- 数据结构
+
+  - [树](Documents/数据结构/树.md)
 
 - JVM
 
