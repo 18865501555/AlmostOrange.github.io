@@ -2,13 +2,28 @@
 
   - [快捷键](Documents/IDEA/快捷键.md)
 
-- JavaSE
 
-  - [Java基础学习笔记](Documents/JavaSE/Java基础学习笔记.md)
-  - [Java常用类](Documents/JavaSE/Java常用类.md)
-  - [进制](Documents/JavaSE/进制.md)
+- Java基础
 
-- API
+  - [Java开发环境](Documents/JavaSE/Java基础/Java开发环境.md)
+  - [变量](Documents/JavaSE/Java基础/变量.md)
+  - [基本数据类型](Documents/JavaSE/Java基础/基本数据类型.md)
+  - [运算符](Documents/JavaSE/Java基础/运算符.md)
+  - [结构](Documents/JavaSE/Java基础/结构.md)
+  - [数组](Documents/JavaSE/Java基础/数组.md)
+  - [方法](Documents/JavaSE/Java基础/方法.md)
+  - [Java常用类](Documents/JavaSE/Java基础/Java常用类.md)
+  - [进制](Documents/JavaSE/Java基础/进制.md)
+
+
+- JavaOOP(面向对象)
+
+  - [抽象](Documents/JavaSE/JavaOOP/抽象.md)
+  - [继承](Documents/JavaSE/JavaOOP/继承.md)
+  - [封装](Documents/JavaSE/JavaOOP/封装.md)
+  - [多态](Documents/JavaSE/JavaOOP/多态.md)
+
+- JavaAPI
 
   - [Object](Documents/JavaSE/API/Object.md)
   - [File](Documents/JavaSE/API/File.md)
@@ -23,7 +38,7 @@
   - [索引](Documents/数据库/索引.md)
   - [数据库学习笔记](Documents/数据库/数据库学习笔记.md)
   - [MySQL数据类型](Documents/数据库/MySQL数据类型.md)
-  - [truncate、delete与drop的区别](Documents/数据库/删除语句的区别.md)
+  - [删除语句的区别](Documents/数据库/删除语句的区别.md)
   - [8种SQL错误用法](Documents/数据库/八种SQL错误用法.md)
 
 
@@ -33,6 +48,12 @@
   - [MyBatis框架](Documents/框架/MyBatis框架.md)
   - [常用注解](Documents/框架/常用注解.md)
 
+- JVM
+
+  - [内存-堆](Documents/JVM/内存-堆.md)
+  - [内存-栈](Documents/JVM/内存-栈.md)
+  - [内存-方法区](Documents/JVM/内存-方法区.md)
+  - [GC](Documents/JVM/GC.md)
 
 
 - 项目
