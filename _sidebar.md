@@ -80,11 +80,16 @@
 
   - [ARIA2](Documents/安装教程/aria2.md)
   - [Redis](Documents/安装教程/Redis.md)
+  - [Kafka](Documents/安装教程/Kafka.md)
 
 
 
 - 面试题 
 
   - [面试题汇总](Documents/面试刷题/面试题汇总.md)
+  - [JavaSE基础-面向对象](Documents/面试刷题/JavaSE基础/面向对象.md)
+  - [JavaSE基础-JavaSE语法](Documents/面试刷题/JavaSE基础/JavaSE语法.md)
+  - [JavaSE基础-Java中的多态](Documents/面试刷题/JavaSE基础/Java中的多态.md)
+  - [JavaSE基础-Java的异常处理](Documents/面试刷题/JavaSE基础/Java的异常处理.md)
 
 
