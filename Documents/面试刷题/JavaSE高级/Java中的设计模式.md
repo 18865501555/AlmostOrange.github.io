@@ -203,9 +203,9 @@
     }
   }
   public void produceSmsSender(int count) { 
-      for (int i = 0; i < count; i++) {
-        list.add(new SmsSender()); 
-      }
+    for (int i = 0; i < count; i++) {
+      list.add(new SmsSender()); 
+    }
   }
   public class Builder {
   	private List<Sender> list = new ArrayList<Sender>();
@@ -253,7 +253,7 @@
     public class Adapter extends Source implements Targetable {
       @Override
       public void method2() {
-      System.out.println("this is the targetable method!"); 
+      	System.out.println("this is the targetable method!"); 
       }
     }
     public class AdapterTest {
@@ -279,11 +279,11 @@
       }
     	@Override
     	public void method2() {
-    	System.out.println("this is the targetable method!"); 
+    		System.out.println("this is the targetable method!"); 
       }
     	@Override
     	public void method1() {
-    	source.method1(); 
+    		source.method1(); 
       }
     } 
     -----------------------------------------------------public class AdapterTest {
@@ -305,4 +305,158 @@
 ---
 
 ## 装饰模式(Decorator)
+
+- 装饰模式就是给一个对象增加一些新的功能，而且是动态的，要求装饰对象和被装饰对象实现同一个接口，装饰对象持有被装饰对象的实例
+
+  ```java
+  public interface Sourceable { 
+    public void method();
+  }
+  ---------------------------------------------------------
+  public class Source implements Sourceable {
+   	@Override
+   	public void method() {
+  		System.out.println("the original method!"); 
+    }
+  } 
+  --------------------------------------------------------- public class Decorator implements Sourceable {
+  	private Sourceable source;
+  	public Decorator(Sourceable source) {
+  		super();
+  		this.source = source; 
+    }
+  	@Override
+  	public void method() {
+  		System.out.println("before decorator!");
+      source.method(); 
+      System.out.println("after decorator!");
+  	} 
+  }
+  ---------------------------------------------------------
+  public class DecoratorTest {
+  	public static void main(String[] args) {
+  		Sourceable source = new Source(); 
+      Sourceable obj = new Decorator(source); 
+      obj.method();
+  	}
+  }
+  ```
+
+---
+
+## 策略模式(Strategy)
+
+- 策略模式定义了一系列算法，并将每个算法封装起来，使他们可以相互替换，且算法的变化不会影响到使用算法的客户
+- 需要设计一个接口，为一系列实现类提供统一的方法，多个实现类实现该接口，设计一个抽象类(可有可无， 属于辅助类)，提供辅助函数
+- 策略模式的决定权在用户，系统本身提供不同算法的实现，新增或者删除算法，对各种 算法做封装
+- 策略模式多用在算法决策系统中，外部用户只需要决定用哪个算法即可
+
+```java
+public interface ICalculator {
+	public int calculate(String exp);
+}
+------------------------------------------------------------
+public class Minus extends AbstractCalculator implements ICalculator {
+  @Override
+	public int calculate(String exp) {
+		int arrayInt[] = split(exp, "-");
+		return arrayInt[0] - arrayInt[1]; 
+  }
+}
+------------------------------------------------------------
+public class Plus extends AbstractCalculator implements ICalculator {
+  @Override
+	public int calculate(String exp) {
+		int arrayInt[] = split(exp, "\\+");
+    return arrayInt[0] + arrayInt[1];
+	}
+} 
+------------------------------------------------------------public class AbstractCalculator {
+	public int[] split(String exp, String opt) { 
+    String array[] = exp.split(opt);
+		int arrayInt[] = new int[2];
+		arrayInt[0] = Integer.parseInt(array[0]); 
+    arrayInt[1] = Integer.parseInt(array[1]);
+		return arrayInt;
+  }
+}
+public class StrategyTest {
+	public static void main(String[] args) {
+		String exp = "2+8";
+		ICalculator cal = new Plus();
+   	int result = cal.calculate(exp);
+		System.out.println(result);
+	} 
+}
+```
+
+---
+
+## 观察者模式(Observer)
+
+- 观察者模式很好理解，类似于邮件订阅和 RSS 订阅，当我们浏览一些博客或 wiki 时，经常会看到 RSS 图标，当你订阅了该文章，如果后续有更新，会及时通知你。
+- 当一个对象变化时，其 它依赖该对象的对象都会收到通知，并且随着变化!对象之间是一种一对多的关系
+
+```java
+public interface Observer {
+  public void update();
+}
+public class Observer1 implements Observer {
+	@Override
+ 	public void update() {
+		System.out.println("observer1 has received!"); 
+  }
+}
+public class Observer2 implements Observer {
+	@Override
+ 	public void update() {
+		System.out.println("observer2 has received!"); 
+  }
+}
+public interface Subject { 
+  /*增加观察者*/
+	public void add(Observer observer);
+	/*删除观察者*/
+	public void del(Observer observer);
+	/*通知所有的观察者*/
+	public void notifyObservers();
+  /*自身的操作*/
+	public void operation();
+}
+public abstract class AbstractSubject implements Subject {
+  private Vector<Observer> vector = new Vector<Observer>(); 
+	@Override
+	public void add(Observer observer) {
+		vector.add(observer);
+}
+	@Override
+	public void del(Observer observer) {
+		vector.remove(observer); 
+  }
+	@Override
+	public void notifyObservers() {
+		Enumeration<Observer> enumo = vector.elements(); 
+    while (enumo.hasMoreElements()) {
+			enumo.nextElement().update(); 
+    }
+	} 
+}
+public class MySubject extends AbstractSubject {
+	@Override
+	public void operation() {
+		System.out.println("update self!"); 
+    notifyObservers();
+	}
+}
+public class ObserverTest {
+	public static void main(String[] args) {
+		Subject sub = new MySubject();
+		sub.add(new Observer1()); 
+    sub.add(new Observer2());
+		sub.operation(); 
+  }
+}
+```
+
+---
 
