@@ -92,5 +92,6 @@
   - [JavaSE基础-Java中的多态](Documents/面试刷题/JavaSE基础/Java中的多态.md)
   - [JavaSE基础-Java的异常处理](Documents/面试刷题/JavaSE基础/Java的异常处理.md)
   - [JavaSE基础-JavaSE常用API](Documents/面试刷题/JavaSE基础/JavaSE常用API.md)
+  - [JavaSE基础-Java 的数据类型](Documents/面试刷题/JavaSE基础/Java 的数据类型.md)
 
 
