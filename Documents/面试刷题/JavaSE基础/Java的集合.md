@@ -325,3 +325,22 @@ for(String q : queue2){
 
 ---
 
+## Collection和Map的集成体系
+
+- Collection
+
+  ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gidi5s926sj318z0u0gq0.jpg)
+
+- Map
+
+  ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gidi9g1vy5j311c0qk76d.jpg)
+
+---
+
+## Map中的key和value可以为null么
+
+- HashMap
+  - HashMap对象的key、value值均可为null
+- HashTable
+  - HashTable对象的key、value值均不可为null
+- 且两者的key值均不能重复，若添加key相同的键值对，后面的value会自动覆盖前面的value，但不会报错
