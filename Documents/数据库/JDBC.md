@@ -545,9 +545,43 @@ try{
 
 #### 批量更新的优势
 
+- 批处理
+  - 发送到数据库作为一个单元执行的一组更新语句
+- 批处理降低了应用程序和数据库之间的网络调用
+- 相比单个SQL语句的处理，批处理更为有效
+
 #### 批量更新API
 
+- addBatch(String sql)
+  - Statement类的方法，可以将多条sql语句添加Statement对象的SQL语句列表中
+- addBatch()
+  - PreparedStatement类的方法，可以将多条预编译的sql语句添加到PreparedStatement对象的SQL语句列表
+- executeBatch()
+  - 把Statement对象或PreparedStatement对象语句列表中的所有SQL语句发送给数据库进行处理
+- clearBatch()
+  - 清空当前SQL语句列表
+
 #### 防止OutOfMemory
+
+- 如果PreparedStatement对象中的SQL列表包含过多的待处理SQL语句，可能会产生OutOfMemory错误
+
+- 及时处理SQL语句列表
+
+  ```java
+  for(int i=0;i<1000;i++){
+    sql = "insert into emp(empno,ename)values(emp_seq.nextval,'name"+i+"'")";
+  	//将SQL语句加入到Batch中
+    statement.addBatch(sql);
+    if(i%500==0){
+      //及时处理
+      statement.executeBatch();
+      //清空列表
+      statement.clearBatch();
+    }
+  }
+  //最后一次列表不足500条，处理
+  statement.executeBatch();
+  ```
 
 ### 返回自动主键
 
@@ -571,7 +605,7 @@ SELECT * FROM animals;
 
 #### JDBC返回自动主键API
 
-- 利用PrepareStatement的getGeneratedKeys方法获取自增类型的数据
+- 利用PreparedStatement的getGeneratedKeys方法获取自增类型的数据
 
   ```java
   // statement第二个参数是GeneratedKeys的字段名列表，字符串数组
@@ -622,9 +656,21 @@ SELECT * FROM animals;
 
 #### 查询方法
 
+```java
 
+```
 
 #### 更新方法
 
+```java
+
+```
+
 #### 异常处理机制
 
+- 多层系统的异常处理原则
+  - 谁抛出的异常，谁捕捉处理，因为只有异常抛出者，知道怎样捕捉处理异常
+  - 尽量在当前层中捕捉处理抛出的异常，尽量不要抛出到上层接口
+  - 尽量在每层中封装每层的异常类，这要可准确定位异常抛出的层
+  - 如异常无法捕捉处理，则向上层接口抛出，直至抛给JVM
+  - 应尽量避免将异常抛给JVM
