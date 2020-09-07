@@ -477,9 +477,44 @@ ps.executeUpdate();
 
 #### 事务简介
 
+- 事务(Transaction):数据库中保证交易可靠的机制
+- JDBC支持数据库中的事务概念
+- 在JDBC中，事务默认是自动提交的
+
 #### JDBC事务API
 
+- 相关API
+  - Connection.getAutoCommit()
+    - 获得当前事务的提交方式，默认为true
+  - Connection.setAutoCommit()
+    - 设置事务的提交属性，参数是
+      - true自动提交
+      - false不自动提交
+  - Connection.commit();
+    - 提交事务
+  - Connection.rollback()
+    - 回滚事务
+
 #### JDBC标准事务编程模式
+
+```java
+try{
+  //获得自动提交状态
+  autoCommit = connection.getAutoCommit();
+  //关闭自动提交
+  connnection.setAutoCommit(false);
+  //执行SQL语句
+  statement.executeUpdate(sql1);
+  statement.executeUpdate(sql2);
+  //提交
+  connection.commit();
+  //将自动提交功能恢复到原来的状态
+  connection.setAutoCommit(autoCommit);
+}catch(SQLException e){
+  //异常时会滚
+  conn.rollback();
+}
+```
 
 ### 批量更新
 
@@ -493,9 +528,38 @@ ps.executeUpdate();
 
 #### 关联数据插入
 
+- 主表/从表关联关系，插入数据时需要保证数据完整性
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gii832lm7cj30o20x2gn7.jpg)
+
 #### 通过自增类型产生主键
 
+```mysql
+CREATE TABLE animals(
+  id INT NOT NULL AUTO_INCREMENT,
+	name CHAR(30) NOT NULL,
+  PRIMARY KEY (id)
+);
+INSERT INTO animals(name)VALUES('dog'),('cat'),('penguin'),('lax'),('whale'),('ostrich');
+SELECT * FROM animals;
+```
+
 #### JDBC返回自动主键API
+
+- 利用PrepareStatement的getGeneratedKeys方法获取自增类型的数据
+
+  ```java
+  // statement第二个参数是GeneratedKeys的字段名列表，字符串数组
+  sql = "insert into animals(name) values(?)";
+  statement = con.prepareStament(sql,new String[]{"id"});
+  statement.setString(1,"Cat");
+  statement.executeUpdate();
+  // 获得主键值所在的result
+  result = statement.getGeneratedKeys();
+  result.next();
+  // 从rs中取出主键值，从表使用
+  int id = result.getInt(1);
+  ```
 
 ---
 
@@ -507,11 +571,33 @@ ps.executeUpdate();
 
 #### DAO封装对数据的访问
 
+- DAO(Data Access Object)数据访问对象
+- 建立在数据库和业务层之间，封装所有对数据库的访问
+- 目的
+  - 数据访问逻辑和业务逻辑分开
+- 为了建立一个健壮的Java应用，需将所有对数据源的访问操作抽象封装在一个公共API中，包括
+  - 建立一个接口，接口中定义了应用程序中将会用到的所有事务方法
+  - 建立接口的实现类，实现接口对应的所有方法，和数据库直接交互
+- 在应用程序中，当需要和数据源交互时则使用DAO接口，不涉及任何数据库的具体操作
+- DAO通常包括
+  - 一个DAO工厂类
+  - 一个DAO接口
+  - 一个实现DAO接口的具体类
+  - 数据传递对象(实体对象或值对象)
+
 #### 实体对象
+
+- DAO层需要定义对数据库中表的访问
+- 对象关系映射(ORM:Object/Relation Mapping)描述对象和数据表之间的映射，将Java程序中的对象对应到关系数据库的表中
+  - 表和类对应
+  - 表中的字段和类的属性对应
+  - 记录和对象对应
 
 ### 编写DAO
 
 #### 查询方法
+
+
 
 #### 更新方法
 
