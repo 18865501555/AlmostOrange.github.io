@@ -657,13 +657,39 @@ SELECT * FROM animals;
 #### 查询方法
 
 ```java
-
+public Account findById(Integer id) throws SQLException{
+  Connection connection = getConnection();
+  //预先定义好的SQL查询语句
+  String sql = SELECT_BY_ID;
+  PrepareStatement ps = connection.prepareStatement(sql);
+	//传入参数
+  ps.setInt(1,id);
+  ResultSet result = ps.executeQuery();
+  Account account = null;
+  //处理结果集
+  while(rs.next()){
+    account = new Account();
+    account.setId(rs.getInt("ACCOUNT_ID"));
+    //设置account对象所有的属性...
+  }
+  return account;
+}
 ```
 
 #### 更新方法
 
 ```java
-
+public boolean update(Account account) throws SQLException{
+  Connection connection = getConnection();
+  //预先定义好的SQL语句
+  String sql = UPDATE_STATUS;
+  PreparedStatement ps = connection.prepareStatement(sql);
+	//传入参数
+  ps.setInt(1,account.getId());
+  ps.setString(2,account.getStatus());
+  int flag = ps.executeUpdate();
+  return (flag > 0 ? true : false);
+}
 ```
 
 #### 异常处理机制
