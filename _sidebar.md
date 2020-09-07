@@ -31,6 +31,7 @@
   - [StringBuilder](Documents/JavaSE/API/StringBuilder.md)
   - [正则表达式](Documents/JavaSE/API/正则表达式.md)
   - [包装类](Documents/JavaSE/API/包装类.md)
+  - [XML](Documents/JavaSE/API/XML.md)
 
 - 数据库
 
