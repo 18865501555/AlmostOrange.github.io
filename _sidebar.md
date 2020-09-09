@@ -59,6 +59,7 @@
   - [参数值注入](Documents/框架/Spring框架/参数值注入.md)
   - [Spring IOC](Documents/框架/Spring框架/SpringIOC.md)
   - [Spring容器](Documents/框架/Spring框架/Spring容器.md)
+  - [基于注解的组件扫描](Documents/框架/Spring框架/基于注解的组件扫描.md)
 
 
 - 框架Framework
