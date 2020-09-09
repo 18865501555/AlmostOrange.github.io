@@ -63,6 +63,7 @@
   - [基于注解配置的MVC应用](Documents/框架/Spring框架/基于注解配置的MVC应用.md)
   - [基于XML配置的MVC应用](Documents/框架/Spring框架/基于XML配置的MVC应用.md)
   - [SpringWebMVC简介](Documents/框架/Spring框架/SpringWebMVC简介.md)
+  - [Spring对JDBC的整合支持](Documents/框架/Spring框架/Spring对JDBC的整合支持.md)
 
 
 - 框架Framework
