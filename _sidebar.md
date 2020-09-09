@@ -56,6 +56,9 @@
 - Spring框架
 
   - [Spring简介](Documents/框架/Spring框架/Spring简介.md)
+  - [参数值注入](Documents/框架/Spring框架/参数值注入.md)
+  - [Spring IOC](Documents/框架/Spring框架/SpringIOC.md)
+  - [Spring容器](Documents/框架/Spring框架/Spring容器.md)
 
 
 - 框架Framework
