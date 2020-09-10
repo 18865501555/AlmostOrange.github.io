@@ -91,6 +91,7 @@
   
 - 踩过的坑
 
+  - [HTTP状态码](Documents/踩过的坑/HTTP状态码.md)
   - [404汇总](Documents/踩过的坑/404汇总.md)
 
 - Unix/Linux 
