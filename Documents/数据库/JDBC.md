@@ -45,8 +45,8 @@
 #### Driver接口及驱动类加载
 
 - 驱动类加载方式(MySQL)
-  - `Class.forName("com.mysql.cj.jdbc.Driver");
-    - ("com.mysql.cj.jdbc.Driver")装载驱动类
+  - `Class.forName("com.mysql.cj.jdbc.Driver");`
+    - `("com.mysql.cj.jdbc.Driver")`装载驱动类
     - 驱动类通过static块实现在DriverManager中的"自动注册"
 
 #### Connection接口
@@ -59,10 +59,10 @@ Connenction connection = DriverManager.getConnection("url","user","password");
 
 #### Statement接口
 
-- Statement statement = connection.createStatement();
-  - boolean flag = statement.execute(sql);
-  - ResultSet resultSet = statement.executeQuery(sql);
-  - int flag = statement.executeUpdate(sql);
+- `Statement statement = connection.createStatement();`
+  - `boolean flag = statement.execute(sql);`
+  - `ResultSet resultSet = statement.executeQuery(sql);`
+  - `int flag = statement.executeUpdate(sql);`
 
 #### ResultSet接口
 
@@ -190,8 +190,8 @@ public static void closeConnection(Connection connection){
 - Apache的一个Java连接池开源项目，同时也是Tomcat使用的连接池组件
 - 连接池是创建和管理连接的缓冲池技术，将连接准备好被任何需要它们的应用使用
 - 需要两个jar包文件
-  - commons-dbcp-1.4.jar连接池的实现
-  - commons-pool-1.5.jar连接池实现的依赖库
+  - `commons-dbcp-1.4.jar`连接池的实现
+  - `commons-pool-1.5.jar`连接池实现的依赖库
 - 利用Maven导入
 
 #### 通过DataSource获取连接
@@ -273,35 +273,35 @@ Connection connection  = dataSource.getConnection();
 
 #### SQLException简介
 
-- java.sql.SQLException是在处理JDBC时常见的exception对象
-- 用来表示JDBC操作过程中发生的具体错误
-- 一般的SQLException都是因为操作数据库时出错，比如sql语句写错，或者数据库中的表或数据出错
+- `java.sql.SQLException`是在处理`JDBC`时常见的`exception`对象
+- 用来表示`JDBC`操作过程中发生的具体错误
+- 一般的`SQLException`都是因为操作数据库时出错，比如`sql`语句写错，或者数据库中的表或数据出错
 - 常见异常
   - 登陆被拒绝
     - 程序里取键值对信息时的大小写和属性文件中不匹配
   - 列名无效
     - 查找的表和查找的列不匹配
   - 无效字符
-    - sql语句语法有错，比如语句结尾时不能有分号
+    - `sql`语句语法有错，比如语句结尾时不能有分号
   - 无法转换为内部表示
     - 结果集取数据时注意数据类型
   - 表或视图不存在
-    - 检查SQL中的表名是否正确
+    - 检查`SQL`中的表名是否正确
   - 不能将空值插入
-    - 检查执行insert操作时，是否表有NOT NULL约束，而没有给出数据
+    - 检查执行`insert`操作时，是否表有`NOT NULL`约束，而没有给出数据
   - 缺少表达式
-    - 检查SQL语句的语法
-  - SQL命令未正确结束
-    - 检查SQL语句的语法
+    - 检查`SQL`语句的语法
+  - `SQL`命令未正确结束
+    - 检查`SQL`语句的语法
   - 无效数值
-    - 企图将字符串类型的值填入数字型而造成，检查SQL语句
+    - 企图将字符串类型的值填入数字型而造成，检查`SQL`语句
   - 文件找不到
-    - db.properties文件路径不正确
+    - `db.properties`文件路径不正确
 
 #### 处理SQLException
 
-- SQLException属于CheckedException
-- 必须使用try...catch或throws明确处理
+- `SQLException`属于`CheckedException`
+- 必须使用`try...catch`或`throws`明确处理
 
 ---
 
@@ -313,17 +313,17 @@ Connection connection  = dataSource.getConnection();
 
 #### Statement执行查询
 
-- 创建Statement的方式
+- 创建`Statement`的方式
 
-  - Connection.createStatement();
+  - `Connection.createStatement();`
 
-- 执行INSERT,UPDATE和DELETE
+- 执行`INSERT`,`UPDATE`和`DELETE`
 
-  - Statement.executeUpdate();
+  - `Statement.executeUpdate();`
 
-- 执行SELECT
+- 执行`SELECT`
 
-  - Statement.executeQuery();
+  - `Statement.executeQuery();`
 
   ```java
   String sql = "select empno,ename,sal,hiredate from emp";
@@ -348,23 +348,23 @@ try{
 
 #### Statement执行修改
 
-- 和INSERT操作完全相同，只是SQL语句不同
+- 和`INSERT`操作完全相同，只是`SQL`语句不同
 
 ### PreparedStatement
 
 #### PreparedStatement原理
 
-- Statement主要用于执行静态SQL语句，即内容固定不变的SQL语句
-- Statement每执行一次都要对传入的SQL语句编译一次，效率较差
-- 某些情况下，SQL语句只是其中的参数有所不同，其余子句完全相同，适用于PreparedStatement
-- 预防sql注入攻击
-- PreparedStatement是接口，继承自Statement
-- SQL语句提前编译，三种常用方法execute、executeQuery和executeUpdate已被更改，不再需要参数
-- PreparedStatement实例包含已实现编译的SQL语句
-- SQL语句可有一个或多个IN参数
-  - IN参数的值在SQL语句创建时未被指定，该语句为每个IN参数保留一个问号("?")作为占位符
-  - 每个问号的值必须在该语句执行之前，通过适当的setInt或者setString方法提供
-- 由于PreparedStatement对象已预编译过，所以其执行速度要快于Statement对象。因此多次执行的SQL语句经常创建为PreparedStatement对象，以提高效率
+- `Statement`主要用于执行静态`SQL`语句，即内容固定不变的`SQL`语句
+- `Statement`每执行一次都要对传入的`SQL`语句编译一次，效率较差
+- 某些情况下，`SQL`语句只是其中的参数有所不同，其余子句完全相同，适用于`PreparedStatement`
+- 预防`sql`注入攻击
+- `PreparedStatement`是接口，继承自`Statement`
+- `SQL`语句提前编译，三种常用方法`execute`、`executeQuery`和`executeUpdate`已被更改，不再需要参数
+- `PreparedStatement`实例包含已实现编译的`SQL`语句
+- `SQL`语句可有一个或多个IN参数
+  - `IN`参数的值在`SQL`语句创建时未被指定，该语句为每个`IN`参数保留一个问号`("?")`作为占位符
+  - 每个问号的值必须在该语句执行之前，通过适当的`setInt`或者`setString`方法提供
+- 由于`PreparedStatement`对象已预编译过，所以其执行速度要快于`Statement`对象。因此多次执行的`SQL`语句经常创建为`PreparedStatement`对象，以提高效率
 - 批量处理
 
 ```java
@@ -379,19 +379,19 @@ ps.executeUpdate();
 
 #### 提升性能
 
-- 数据库具备缓存功能，可以对statement的执行计划进行缓存，以免重复分析
+- 数据库具备缓存功能，可以对`statement`的执行计划进行缓存，以免重复分析
 - 缓存原理
-  - 使用statement本身作为key并将执行计划存入与statement对应的缓存中
-  - 对曾经执行过的statements，在运行时执行计划将重用
+  - 使用`statement`本身作为key并将执行计划存入与`statement`对应的缓存中
+  - 对曾经执行过的`statements`，在运行时执行计划将重用
 - 举例
-  - SELECT a,b FROM t WHERE c = 1;
-  - 再次发送相同的statement时，数据库会对先前使用过的执行计划进行重用，降低开销
+  - `SELECT a,b FROM t WHERE c = 1;`
+  - 再次发送相同的`statement`时，数据库会对先前使用过的执行计划进行重用，降低开销
 - 悲剧
-  - SELECT a,b FROM t WHERE c=1;
-  - SELECT a,b FROM t WHERE c=2;
+  - `SELECT a,b FROM t WHERE c=1;`
+  - `SELECT a,b FROM t WHERE c=2;`
   - 被视作不同的SQL语句，执行计划不可重用
 - 提升性能
-  - SELECT a,b FROM t WHERE c=?
+  - `SELECT a,b FROM t WHERE c=?`
   - 被视作同一个的SQL语句，执行计划可重用
 
 #### SQLInjection简介
@@ -410,23 +410,23 @@ ps.executeUpdate();
 
   ---
 
-  - 如果用户输入的password参数是`a'or'b'='b`则数据库收到的SQL语句将是
+  - 如果用户输入的`password`参数是`a'or'b'='b`则数据库收到的SQL语句将是
 
   ```mysql
   select*from t where username = 'scott' and password = 'a'or'b'='b';
   ```
 
-  - 此SQL语句的where条件将永远为true
+  - 此`SQL`语句的`where`条件将永远为`true`
 
-- 这种现象被称作SQL注入
+- 这种现象被称作`SQL`注入
 
 #### 防止SQL Injection
 
-- 对JDBC而言，SQL注入攻击只对Statement有效，对PreparedStatement无效，因为PreparedStatement不允许在插入参数时改变SQL语句的逻辑结构
+- 对`JDBC`而言，`SQL`注入攻击只对`Statement`有效，对`PreparedStatement`无效，因为`PreparedStatement`不允许在插入参数时改变`SQL`语句的逻辑结构
 
-- 使用预编译的语句对象，用户传入的任何数据不会和原SQL语句发生匹配关系，无需对输入的数据做过滤
+- 使用预编译的语句对象，用户传入的任何数据不会和原`SQL`语句发生匹配关系，无需对输入的数据做过滤
 
-- 如果用户将"or1=1"传入赋值给占位符，SQL语句将无法执行
+- 如果用户将`"or1=1"`传入赋值给占位符，`SQL`语句将无法执行
 
   ```mysql
   select*from t where username = ? and password = ?;
@@ -452,11 +452,11 @@ ps.executeUpdate();
 
 #### ResultSetMetaData
 
-- ResultSetMetaData
+- `ResultSetMetaData`
 
   - 数据结果集的元数据
 
-- 和查询出来的结果集相关，从结果集(ResultSet)中获取
+- 和查询出来的结果集相关，从结果集`(ResultSet)`中获取
 
   ```java
   ResultSetMetaData rsm = result.getMetaData();
