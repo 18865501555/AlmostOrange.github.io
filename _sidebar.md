@@ -53,6 +53,7 @@
 - 前端框架
 
   - [jQuery](Documents/框架/前端框架/jQuery.md)
+  - [jQuery选择器](Documents/框架/前端框架/jQuery选择器.md)
 
 
 - Spring框架
@@ -118,6 +119,7 @@
 - 面试题 
 
   - [面试题汇总](Documents/面试刷题/面试题汇总.md)
+  - [冒泡排序](Documents/面试刷题/冒泡排序.md)
   - [JavaSE基础-面向对象](Documents/面试刷题/JavaSE基础/面向对象.md)
   - [JavaSE基础-JavaSE语法](Documents/面试刷题/JavaSE基础/JavaSE语法.md)
   - [JavaSE基础-Java中的多态](Documents/面试刷题/JavaSE基础/Java中的多态.md)
