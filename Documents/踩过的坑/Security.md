@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
       	// 指定用户名
       	.withUser("root")
         // 指定密码
-        .password("{noop}1234")
+        .password("1234")
         // 指定授权
         .authorities("/admin/list");
     }
