@@ -49,3 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
+- NoOpPasswordEncoder：明文， 不做加密
+
+- {noop}Password 则是使用明文保存的密码 (noop: No Operation)
