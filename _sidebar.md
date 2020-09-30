@@ -100,6 +100,7 @@
 
   - [HTTP状态码](Documents/踩过的坑/HTTP状态码.md)
   - [404汇总](Documents/踩过的坑/404汇总.md)
+  - [Security使用密码加密器](Documents/踩过的坑/Security.md)
 
 - Unix/Linux 
 
