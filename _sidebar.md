@@ -14,6 +14,7 @@
   - [方法](Documents/JavaSE/Java基础/方法.md)
   - [Java常用类](Documents/JavaSE/Java基础/Java常用类.md)
   - [进制](Documents/JavaSE/Java基础/进制.md)
+  - [常见的编码字符与字节的对应关系](Documents/JavaSE/Java基础/常见的编码字符与字节的对应关系.md)
 
 
 
