@@ -8,6 +8,7 @@
   - [快捷键](Documents/IDEA/快捷键.md)
 
 
+
 - Java基础
 
   - [Java开发环境](Documents/JavaSE/Java基础/Java开发环境.md)
@@ -144,4 +145,6 @@
   - [Java框架-Spring](Documents/面试刷题/框架/Spring.md)
   - [数据库](Documents/面试刷题/数据库/题1.md)
 
+- 实用链接
+  - [IDEA激活码](http://idea.medeming.com/jihuoma)
 
