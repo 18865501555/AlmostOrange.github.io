@@ -76,6 +76,12 @@
   - [Spring对JDBC的整合支持](Documents/框架/Spring框架/Spring对JDBC的整合支持.md)
 
 
+- 设计模式
+
+  - [单例模式](Documents/设计模式/单例模式.md)
+  - [组合模式](Documents/设计模式/组合模式.md)
+
+
 - 框架Framework
 
   - [框架概述](Documents/框架/框架概述.md)
